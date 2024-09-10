@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+</head>
+<body>
+    <h1>Update Task</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="task_title">Task Title:</label>
+        <input type="text" id="task_title" name="task_title" value="{{ task.task_title }}" required><br><br>
+
+        <label for="task_description">Task Description:</label>
+        <textarea id="task_description" name="task_description" required rows=8 cols=40>{{ task.task_description }}</textarea><br><br>
+
+        <label for="task_due_date">Due Date:</label>
+        <input type="date" id="task_due_date" name="task_due_date" value="{{ task.task_due_date }}" required><br><br>
+
+        <input type="submit" value="Update Task">
+    </form>
+    <br>
+
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

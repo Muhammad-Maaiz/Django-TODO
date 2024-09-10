@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tasks</title>
+</head>
+<body>
+    <h1>Your Tasks</h1>
+    <ol>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.task_title }}</strong><br>
+                {{ task.task_description }}<br>
+                Due on: {{ task.task_due_date }}<br>
+                <a href="{% url 'updatetask' task.id %}">Update</a> | 
+                <a href="{% url 'deletetask' task.id %}">Delete</a><br><br>
+            </li>
+        {% empty %}
+            <li>No tasks available.</li>
+        {% endfor %}
+    </ol>
+    <br>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
